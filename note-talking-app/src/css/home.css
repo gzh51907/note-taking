@@ -2,12 +2,14 @@
     margin: 0;
     padding: 0;
 }
-
 li{
     list-style: none;
 }
 html,body{
     width: 100%;
+}
+p{
+    margin-bottom: 0;
 }
 .top{
     height:3.125rem;
@@ -48,7 +50,6 @@ html,body{
     text-align: left;
 }
 /* 背景图片 */
-
 .centetr_top span:nth-child(1){
     font-size:2.5rem;
     color:#f9d48e;

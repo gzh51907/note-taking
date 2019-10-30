@@ -29,7 +29,7 @@ module.exports = {
             // 用正则匹配符合文件进入
             test: /\.jsx?$/,
             // 加载器，一个可以用对象，多个加载器用数组
-            use: {
+            use:        {
                 // loader加载器的名字
                 loader: "babel-loader",
                 // 配置参数
