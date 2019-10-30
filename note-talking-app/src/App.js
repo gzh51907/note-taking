@@ -17,6 +17,7 @@ import Make from './pages/Make';
 import List from './pages/List';
 import Budget from './pages/Budget';
 import Not from './pages/Not'
+import Test from './pages/test'
 
 @withRouter
 
@@ -36,7 +37,7 @@ class App extends Component {
             name: 'keep',
             path: '/keep',
             text: '记一笔',
-            icon: 'login'
+            icon: 'edit'
         }, {
             name: 'budget',
             path: '/budget',
@@ -70,6 +71,7 @@ class App extends Component {
                     <Route path="/budget" component={Budget} className="budgets"></Route>
                     <Route path="/make" component={Make}></Route>
                     <Route path="/keep" component={Keep}></Route>
+					<Route path="/test" component={Test}></Route>
                     <Route path="/" component={Not}></Route>
                 </Switch>
                 <Menu
@@ -81,9 +83,9 @@ class App extends Component {
                 >
                     {
                         menu.map(item => {
-                            return (<Menu.Item key={item.path}>
+                            return (<Menu.Item key={item.path} className={item.path==='/keep'?'highlight':''}>
                                 <Icon type={item.icon} />
-                                {item.text}
+                                <span>{item.text}</span>
                             </Menu.Item>)
                         })
                     }
