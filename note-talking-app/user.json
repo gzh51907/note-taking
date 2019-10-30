@@ -1,0 +1,57 @@
+{
+    "user": 12345678911,
+    "note": [
+        {
+            "note_id": 1,
+            "note_name": "默认账本",
+            "bill": [
+                {
+                    "type": "outcome",
+                    "list": [
+                        {
+                            "list_id": 21413541241,
+                            "title": "穿衣",
+                            "year": 2019,
+                            "month": 10,
+                            "day": 29,
+                            "price": "200",
+                            "text": "没钱"
+                        },
+                        {
+                            "list_id": 21123123541241,
+                            "title": "交通",
+                            "year": 2019,
+                            "month": 11,
+                            "day": 19,
+                            "price": "400",
+                            "text": "衣服"
+                        }
+                    ]
+                },
+                {
+                    "type": "income",
+                    "list": [
+                        {
+                            "list_id": 21413541545345341,
+                            "title": "工资",
+                            "year": 2019,
+                            "month": 11,
+                            "day": 19,
+                            "price": "200",
+                            "text": "工资"
+                        },
+                        {
+                            "list_id": 2141354154786876841,
+                            "title": "工资",
+                            "year": 2019,
+                            "month": 12,
+                            "day": 19,
+                            "price": "500",
+                            "text": "理财"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

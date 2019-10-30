@@ -36,7 +36,7 @@ class App extends Component {
             name: 'keep',
             path: '/keep',
             text: '记一笔',
-            icon: 'login'
+            icon: 'edit'
         }, {
             name: 'budget',
             path: '/budget',
@@ -81,9 +81,9 @@ class App extends Component {
                 >
                     {
                         menu.map(item => {
-                            return (<Menu.Item key={item.path}>
+                            return (<Menu.Item key={item.path} className={item.path==='/keep'?'highlight':''}>
                                 <Icon type={item.icon} />
-                                {item.text}
+                                <span>{item.text}</span>
                             </Menu.Item>)
                         })
                     }
