@@ -17,7 +17,9 @@ import Make from './pages/Make';
 import List from './pages/List';
 import Budget from './pages/Budget';
 import Not from './pages/Not'
+//下面的用于测试
 import Test from './pages/test'
+import Case from './pages/case'
 
 @withRouter
 
@@ -72,6 +74,7 @@ class App extends Component {
                     <Route path="/make" component={Make}></Route>
                     <Route path="/keep" component={Keep}></Route>
 					<Route path="/test" component={Test}></Route>
+					<Route path="/case" component={Case}></Route>
                     <Route path="/" component={Not}></Route>
                 </Switch>
                 <Menu
