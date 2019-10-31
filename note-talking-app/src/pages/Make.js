@@ -4,7 +4,7 @@ class Make extends React.Component {
 
     render() {
         return (
-            <div>设置</div>
+            <div>登录注册</div>
         )
     }
 }
