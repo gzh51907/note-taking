@@ -42,7 +42,9 @@ class Keep extends React.Component {
         let { history } = this.props;
         history.push('/keep/' + name)
     }
-  
+    componentDidMount() {
+        this.props.dispatch({ type: 'GET_DATA_ASYNC' });
+    }
     render() {
 
         let { keep_menu, activeKey} = this.state;
