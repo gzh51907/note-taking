@@ -10,7 +10,7 @@ import Api from '../api';
 
 
 function* getData() {
-    let res = yield call(Api.post('/bill/getbill', {
+    let res = yield (Api.post('/bill/getbill', {
         user_name:'xiaoxie'
     }));
     console.log(res)

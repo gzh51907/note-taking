@@ -73,7 +73,7 @@ class App extends Component {
     }
 
     componentDidMount() {
-
+        this.props.dispatch({ type: 'GET_DATA_ASYNC' });
     }
 
     render() {
