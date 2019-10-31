@@ -12,8 +12,7 @@ class Case extends React.Component {
 	state = {
 		bottom:'-12.5rem',
 		keyword:false,
-		iskey:'1',
-		text:'吃饭',
+		iskey:'0',
 		data:[
 			{
 				text:'唱歌',
@@ -23,6 +22,7 @@ class Case extends React.Component {
 				text:'看电影',
 			}
 		],
+		
 		cart:[
 			{
 				id:'1',
@@ -40,32 +40,72 @@ class Case extends React.Component {
 				text:'看电影',
 				keyword:false,
 			}
+		],
+		alldata:[
+			[
+						{
+							text:'唱歌',
+						},{
+							text:'跳舞',
+						},{
+							text:'看电影',
+						}
+					],
+					[
+						{
+							text:'银行',
+						},{
+							text:'信用卡',
+						},{
+							text:'现金',
+						}
+					]
 		]
+		// data1:[
+		// 			{
+		// 				text:'唱歌',
+		// 			},{
+		// 				text:'跳舞',
+		// 			},{
+		// 				text:'看电影',
+		// 			}
+		// 		],
+		// data2:[
+		// 	{
+		// 		text:'银行',
+		// 	},{
+		// 		text:'信用卡',
+		// 	},{
+		// 		text:'现金',
+		// 	}
+		// ],
+		
 	}  
 	
 	
 	check(key){	
-		console.log(key)
+		// console.log(key)
+		// 内容
+		
+		
+		// 弹窗
 		let isbotton='';
-		if(this.state.iskey!=key){
-			console.log(this.state.iskey)
+		console.log(key,this.state.iskey)
+		if(this.state.iskey==key){
 			isbotton='-12.5rem';
-			// let isbotton='';
-			// let iskeyword= !this.state.keyword
-			// iskeyword?isbotton=0:isbotton='-12.5rem';
-			// this.setState({
-			// 	keyword:iskeyword,
-			// 	bottom:isbotton
-			// })
 		}else{
 			isbotton=0;
 		}
 		this.setState({
-			// keyword:iskeyword,
 			iskey:key,
 			bottom:isbotton
 		})
-		console.log(this.state.iskey)
+		if(isbotton=='-12.5rem'){
+			this.setState({
+				iskey:0
+			})
+		}
+		// console.log(this.state.iskey)
 		
 	}
 	
