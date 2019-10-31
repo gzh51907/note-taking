@@ -18,11 +18,13 @@ Router.use((req, res, next) => {
 //引入每个模块路由
 const userRouter = require('./user');
 const admRouter = require('./adm');
+const billRouter = require('./bill');
 const request = require('request');
 
 Router.use(express.urlencoded());
 Router.use('/user', userRouter);
 Router.use('/adm', admRouter);
+Router.use('/bill', billRouter);
 
 
 Router.get('/verify', (req, res) => {

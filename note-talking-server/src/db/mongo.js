@@ -42,7 +42,6 @@ async function aggregate(colName, query = []) {
     let col = db.collection(colName);
     let result = await col.aggregate(query).toArray();
     client.close();
-    // console.log(result)
     return result;
 }
 // 创建
