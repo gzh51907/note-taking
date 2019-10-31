@@ -2,14 +2,31 @@ import React from 'react';
 
 import { Icon, Tabs } from 'antd';
 const { TabPane } = Tabs;
+
+import { connect } from 'react-redux';
+
+
 import '../css/keep.css';
 import { Route } from 'react-router-dom';
 import Addbill from './addbill';
 function callback(key) {
     console.log(key);
 }
+const mapStateToProps = ({ home }) => ({
 
+});
+const mapDispatchToProps = dispatch => {
+    return {
+        update(payload) {
+            dispatch({ type: 'UPDATE_SELECTED', payload })
+            let { history } = this.props;
+            history.push('/home')
+        },
+        dispatch
+    }
+}
 
+@connect(mapStateToProps,mapDispatchToProps)
 class Keep extends React.Component {
 
     state = {
@@ -25,21 +42,17 @@ class Keep extends React.Component {
         let { history } = this.props;
         history.push('/keep/' + name)
     }
-    gotohome = () => {
-        let { history } = this.props;
-        history.push('/home')
-       
-    }
+  
     render() {
 
         let { keep_menu, activeKey} = this.state;
-        let {match}=this.props
+        let { match, update}=this.props
 
         return (
             <div className="keep">
                 <div className="keep_top">
                     <div className="keep_top_top">
-                        <div ><Icon type="left" onClick={this.gotohome}></Icon></div>
+                        <div ><Icon type="left" onClick={update.bind(this,'/home')}></Icon></div>
                         <div style={{ fontWeight: 900 }}>记一笔</div>
                         <div style={{ fontWeight: 600, color: "#e9a944" }}>
                             <Icon type="check"></Icon>
