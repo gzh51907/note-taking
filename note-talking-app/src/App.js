@@ -23,6 +23,7 @@ import Test from './pages/test'
 
 class App extends Component {
     state = {
+        selected: ['/home'],
         menu: [{
             name: 'home',
             path: '/home',
@@ -57,7 +58,14 @@ class App extends Component {
             selected: [pathname]
         })
     }
-
+    // componentdidupdate(nextProps, nextState) {
+       
+    //     let { location: { pathname } } = nextProps;
+    //     this.setState({
+    //         selected: [pathname]
+    //     })
+       
+    // }
     render() {
         let { history } = this.props
         let { selected, menu } = this.state;
@@ -71,19 +79,24 @@ class App extends Component {
                     <Route path="/budget" component={Budget} className="budgets"></Route>
                     <Route path="/make" component={Make}></Route>
                     <Route path="/keep" component={Keep}></Route>
-					<Route path="/test" component={Test}></Route>
+                    <Route path="/test" component={Test}></Route>
                     <Route path="/" component={Not}></Route>
                 </Switch>
                 <Menu
                     className="menuitemss"
                     mode="horizontal"
+                    selectedKeys={selected}
                     onSelect={({ key }) => {
                         history.push(key)
+                        this.setState({
+                            selected: [key]
+                        })
+
                     }}
                 >
                     {
                         menu.map(item => {
-                            return (<Menu.Item key={item.path} className={item.path==='/keep'?'highlight':''}>
+                            return (<Menu.Item key={item.path} >
                                 <Icon type={item.icon} />
                                 <span>{item.text}</span>
                             </Menu.Item>)
