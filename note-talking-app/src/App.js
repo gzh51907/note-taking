@@ -23,9 +23,9 @@ import Test from './pages/test'
 import Case from './pages/case'
 
 const mapStateToProps = ({ home }) => ({
- 
+
     selected_state: home.selected
-  
+
 });
 const mapDispatchToProps = dispatch => {
     return {
@@ -40,7 +40,7 @@ const mapDispatchToProps = dispatch => {
 
 
 @withRouter
-@connect(mapStateToProps,mapDispatchToProps)
+@connect(mapStateToProps, mapDispatchToProps)
 class App extends Component {
     state = {
         selected: ['/home'],
@@ -73,13 +73,13 @@ class App extends Component {
     }
 
     componentDidMount() {
-  
+
     }
 
     render() {
-        let { history, update, selected_state} = this.props
-        let {  menu } = this.state;
-        console.log(selected_state)
+        let { history, update, selected_state } = this.props
+        let { menu } = this.state;
+
         return (
             <div>
                 <Switch>
@@ -99,15 +99,12 @@ class App extends Component {
                     selectedKeys={selected_state}
                     onSelect={({ key }) => {
                         history.push(key)
-                        // this.setState({
-                        //     selected: [key]
-                        // })
-                       
+
                     }}
                 >
                     {
                         menu.map(item => {
-                            return (<Menu.Item key={item.path} onClick={update.bind(this,item.path)}>
+                            return (<Menu.Item key={item.path} onClick={update.bind(this, item.path)}>
                                 <Icon type={item.icon} />
                                 <span>{item.text}</span>
                             </Menu.Item>)
