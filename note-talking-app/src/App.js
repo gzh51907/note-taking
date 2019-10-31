@@ -11,6 +11,7 @@ import {
     withRouter
 } from 'react-router-dom';
 import { Menu, Icon } from 'antd';
+import { connect } from 'react-redux';
 import Home from './pages/Home';
 import Keep from './pages/Keep';
 import Make from './pages/Make';
@@ -21,10 +22,28 @@ import Not from './pages/Not'
 import Test from './pages/test'
 import Case from './pages/case'
 
-@withRouter
+const mapStateToProps = ({ home }) => ({
+ 
+    selected_state: home.selected
+  
+});
+const mapDispatchToProps = dispatch => {
+    return {
+        update(payload) {
+            // console.log(payload)
+            dispatch({ type: 'UPDATE_SELECTED', payload })
+        },
+        dispatch
+    }
+}
 
+
+
+@withRouter
+@connect(mapStateToProps,mapDispatchToProps)
 class App extends Component {
     state = {
+        selected: ['/home'],
         menu: [{
             name: 'home',
             path: '/home',
@@ -54,16 +73,13 @@ class App extends Component {
     }
 
     componentDidMount() {
-        let { location: { pathname } } = this.props;
-        this.setState({
-            selected: [pathname]
-        })
+  
     }
 
     render() {
-        let { history } = this.props
-        let { selected, menu } = this.state;
-
+        let { history, update, selected_state} = this.props
+        let {  menu } = this.state;
+        console.log(selected_state)
         return (
             <div>
                 <Switch>
@@ -73,20 +89,25 @@ class App extends Component {
                     <Route path="/budget" component={Budget} className="budgets"></Route>
                     <Route path="/make" component={Make}></Route>
                     <Route path="/keep" component={Keep}></Route>
-					<Route path="/test" component={Test}></Route>
+                    <Route path="/test" component={Test}></Route>
 					<Route path="/case" component={Case}></Route>
                     <Route path="/" component={Not}></Route>
                 </Switch>
                 <Menu
                     className="menuitemss"
                     mode="horizontal"
+                    selectedKeys={selected_state}
                     onSelect={({ key }) => {
                         history.push(key)
+                        // this.setState({
+                        //     selected: [key]
+                        // })
+                       
                     }}
                 >
                     {
                         menu.map(item => {
-                            return (<Menu.Item key={item.path} className={item.path==='/keep'?'highlight':''}>
+                            return (<Menu.Item key={item.path} onClick={update.bind(this,item.path)}>
                                 <Icon type={item.icon} />
                                 <span>{item.text}</span>
                             </Menu.Item>)
