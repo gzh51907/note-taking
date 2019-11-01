@@ -4,7 +4,8 @@
 
 let initialState = {
     selected: '/home',
-    userlist:[]
+    userlist: [],
+    notelist:[]
 }
 
 // Reducer：用于定义修改state方式，必须返回一个新的state
@@ -19,6 +20,11 @@ function reducer(state = initialState, { type, payload }) {
             return {
                 ...state,
                 selected: payload
+            }
+        case "init_state_sync":
+            return {
+                ...state,
+                notelist: payload
             }
         default:
             return state;

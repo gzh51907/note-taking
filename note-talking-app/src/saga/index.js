@@ -13,7 +13,14 @@ function* getData() {
     let res = yield (Api.post('/bill/getbill', {
         user_name:'xiaoxie'
     }));
-    console.log(res)
+    let actions = {
+        type: 'init_state_sync',
+        payload : res[0]
+    }
+
+    // 提交这个actions 到store里面，和在reducer里面提交是一样的
+    yield put(actions)
+ 
 }
 
 function* rootSaga() {

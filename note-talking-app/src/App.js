@@ -25,7 +25,8 @@ import Addone from './pages/addone'
 
 const mapStateToProps = ({ home }) => ({
 
-    selected_state: home.selected
+    selected_state: home.selected,
+    notelist: home.notelist
 
 });
 const mapDispatchToProps = dispatch => {
@@ -78,7 +79,8 @@ class App extends Component {
     }
 
     render() {
-        let { history, update, selected_state } = this.props
+        let { history, update, selected_state, notelist } = this.props
+        console.log(notelist)
         let { menu } = this.state;
 
         return (
