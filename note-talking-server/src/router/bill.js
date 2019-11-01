@@ -41,7 +41,7 @@ Router.post('/getbill', async (req, res) => {
     let { user_name } = req.body.params;
 	console.log(user_name)
 	let date = new Date();
-	let result=await mongo.aggregate('nodebill',[{$match: {'user': 'xiaoxie'}}]);
+	let result=await mongo.aggregate('nodebill',[{$match: {'user': user_name}}]);
 	res.send(result);
 })
 module.exports = Router;
