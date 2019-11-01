@@ -21,6 +21,7 @@ import Not from './pages/Not'
 //下面的用于测试
 import Test from './pages/test'
 import Case from './pages/case'
+import Addone from './pages/addone'
 
 const mapStateToProps = ({ home }) => ({
 
@@ -93,6 +94,7 @@ class App extends Component {
                     <Route path="/keep" component={Keep}></Route>
                     <Route path="/test" component={Test}></Route>
                     <Route path="/case" component={Case}></Route>
+					<Route path="/addone" component={Addone}></Route>
                     <Route path="/" component={Not}></Route>
                 </Switch>
                 <Menu

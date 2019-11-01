@@ -17,10 +17,18 @@ Router.post('/addbill', async (req, res) => {
 	let condition=`note.${node_id}.bill.${type}.list`
 	let result=await mongo.update('nodebill',{"user" : user_name},
 	{ [condition]:{
+			'list_id':Date.now(),
             "title" : title,
 			"price":price,
 			"text":text,
-			'regtime':date.toLocaleString()
+			"year":date.getFullYear(),
+			"month ":date.getMonth(),
+			"day":date.getDate(),
+			"week":date.getDay(),
+			// "month ":10,
+			// "day":30,
+			// "week":3,
+			// 'regtime':date.toLocaleString()
     }});
 	if (result.length) {
 	    res.send(formatData({ code: 0 }))
