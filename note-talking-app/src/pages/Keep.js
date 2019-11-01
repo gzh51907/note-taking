@@ -11,10 +11,10 @@ import { Route } from 'react-router-dom';
 import Addbill from './addbill';
 import Addone from './addone';
 function callback(key) {
-    console.log(key);
+ 
 }
 const mapStateToProps = ({ home }) => ({
-
+    outcomelist: home.outcomelist
 });
 const mapDispatchToProps = dispatch => {
     return {
@@ -50,8 +50,8 @@ class Keep extends React.Component {
     render() {
 
         let { keep_menu, activeKey} = this.state;
-        let { match, update}=this.props
-
+        let { match, update, outcomelist}=this.props
+       
         return (
             <div className="keep">
                 <div className="keep_top">

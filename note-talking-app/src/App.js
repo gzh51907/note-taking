@@ -81,9 +81,6 @@ class App extends Component {
 
     render() {
         let { history, update, selected_state, incomelist, outcomelist } = this.props
-        
-       
-        // console.log("outcomelist", outcomelist)
         let { menu } = this.state;
 
         return (

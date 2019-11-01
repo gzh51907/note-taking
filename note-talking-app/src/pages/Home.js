@@ -5,17 +5,19 @@ import { Icon } from 'antd';
 
 import { connect } from 'react-redux';
 const mapStateToProps = ({ home }) => ({
-    income_year: home.income_year,
-    outcome_year: home.outcome_year
-    
-
+    outcomelist: home.outcomelist,
+    incomelist: home.incomelist
 });
+
+import { year_outcome, year_income, week_outcome, week_intcome, month_outcome, month_income, day_outcome, day_intcome} from './time';
+
 @connect(mapStateToProps)
 
 class Home extends React.Component {
     render() {
 
-        let { income_year, outcome_year } = this.props
+        let { outcomelist, incomelist } = this.props
+        
         
         return (
             <div>
@@ -61,7 +63,7 @@ class Home extends React.Component {
                         <span>点此设置</span>
                         <span>|</span>
                         <span>本月收入</span>
-                        <span>0.00</span>
+                        <span>{month_income(incomelist)}</span>
                     </div>
                 </div>
                 <div className="bottom">
@@ -79,8 +81,8 @@ class Home extends React.Component {
                         </div>
                         <div className="together_right">
                             <div className="right_number">
-                                <p>00.00</p>
-                                <p>15.00</p>
+                                <p>{day_outcome(outcomelist)}</p>
+                                <p>{day_intcome(incomelist)}</p>
                             </div>
                             <div><Icon type="right"></Icon></div>
                         </div>
@@ -91,16 +93,16 @@ class Home extends React.Component {
                             <div className="small_title2">
                                 <p>本周</p>
                                 <p>
-                                    <span>10月28日</span>
+                                    <span>11月1日</span>
                                     <span>-</span>
-                                    <span>11月3日</span>
+                                    <span>11月7日</span>
                                 </p>
                             </div>
                         </div>
                         <div className="together_right">
                             <div className="right_number">
-                                <p>00.00</p>
-                                <p>15.00</p>
+                                <p>{week_outcome(outcomelist)}</p>
+                                <p>{week_intcome(incomelist)}</p>
                             </div>
                             <div><Icon type="right"></Icon></div>
                         </div>
@@ -111,16 +113,16 @@ class Home extends React.Component {
                             <div className="small_title2">
                                 <p>本月</p>
                                 <p>
-                                    <span>10月1日</span>
+                                    <span>11月1日</span>
                                     <span>-</span>
-                                    <span>10月31日</span>
+                                    <span>11月30日</span>
                                 </p>
                             </div>
                         </div>
                         <div className="together_right">
                             <div className="right_number">
-                                <p>00.00</p>
-                                <p>15.00</p>
+                                <p>{month_outcome(outcomelist)}</p>
+                                <p>{month_income(incomelist)}</p>
                             </div>
                             <div><Icon type="right"></Icon></div>
                         </div>
@@ -137,8 +139,8 @@ class Home extends React.Component {
                         </div>
                         <div className="together_right">
                             <div className="right_number">
-                                <p>{outcome_year}</p>
-                                <p>{income_year}</p>
+                                <p>{year_outcome(outcomelist)}</p>
+                                <p>{year_income(incomelist)}</p>
                             </div>
                             <div><Icon type="right"></Icon></div>
                         </div>
