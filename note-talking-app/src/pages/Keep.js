@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import '../css/keep.css';
 import { Route } from 'react-router-dom';
 import Addbill from './addbill';
+import Addone from './addone';
 function callback(key) {
     console.log(key);
 }
@@ -69,7 +70,7 @@ class Keep extends React.Component {
                             {
                                 keep_menu.map((item, index) => {
                                     return (<TabPane tab={item.name} key={index}>
-                                            <Route path={match.path + "/:name"} component={Addbill}></Route>
+                                            <Route path={match.path + "/:name"} component={Addone}></Route>
                                            </TabPane>)
                                 }) 
                                 
