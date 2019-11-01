@@ -3,7 +3,8 @@
  */
 
 let initialState = {
-    selected: '/home'
+    selected: '/home',
+    userlist:[]
 }
 
 // Reducer：用于定义修改state方式，必须返回一个新的state

@@ -30,7 +30,7 @@ const mapDispatchToProps = dispatch => {
 class Keep extends React.Component {
 
     state = {
-        activeKey:"1",
+        activeKey:"0",
         keep_menu: [{ name: "支出" },
         { name: "收入" },
         { name: "转账" },
@@ -42,7 +42,10 @@ class Keep extends React.Component {
         let { history } = this.props;
         history.push('/keep/' + name)
     }
-  
+    componentDidMount() {
+        let { history } = this.props;
+        history.push('/keep/' + 0)
+    }
     render() {
 
         let { keep_menu, activeKey} = this.state;

@@ -3,8 +3,10 @@ import '../css/addbill.css'
 class Addbill extends React.Component {
 
     render() {
+       
+        
         return (
-            <div className="addbill">+12312313++</div>
+            <div className="addbill">abc</div>
             
         )
     }

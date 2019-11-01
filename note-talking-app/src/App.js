@@ -63,18 +63,18 @@ class App extends Component {
         }, {
             name: 'budget',
             path: '/budget',
-            text: '预算',
-            icon: 'login'
+            text: '设置',
+            icon: 'setting'
         }, {
             name: 'make',
             path: '/make',
-            text: '设置',
-            icon: 'login'
+            text: '我的',
+            icon: 'user'
         }]
     }
 
     componentDidMount() {
-
+        this.props.dispatch({ type: 'GET_DATA_ASYNC' });
     }
 
     render() {
@@ -91,7 +91,7 @@ class App extends Component {
                     <Route path="/make" component={Make}></Route>
                     <Route path="/keep" component={Keep}></Route>
                     <Route path="/test" component={Test}></Route>
-					<Route path="/case" component={Case}></Route>
+                    <Route path="/case" component={Case}></Route>
 					<Route path="/addone" component={Addone}></Route>
                     <Route path="/" component={Not}></Route>
                 </Switch>
