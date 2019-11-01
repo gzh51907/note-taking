@@ -1,8 +1,22 @@
 import React from 'react';
 import '../css/home.css';
 import { Icon } from 'antd';
+
+
+import { connect } from 'react-redux';
+const mapStateToProps = ({ home }) => ({
+    income_year: home.income_year,
+    outcome_year: home.outcome_year
+    
+
+});
+@connect(mapStateToProps)
+
 class Home extends React.Component {
     render() {
+
+        let { income_year, outcome_year } = this.props
+        
         return (
             <div>
                 <div className="top">
@@ -123,8 +137,8 @@ class Home extends React.Component {
                         </div>
                         <div className="together_right">
                             <div className="right_number">
-                                <p>00.00</p>
-                                <p>15.00</p>
+                                <p>{outcome_year}</p>
+                                <p>{income_year}</p>
                             </div>
                             <div><Icon type="right"></Icon></div>
                         </div>
