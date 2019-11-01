@@ -19,12 +19,15 @@ Router.use((req, res, next) => {
 const userRouter = require('./user');
 const admRouter = require('./adm');
 const billRouter = require('./bill');
+const picRouter = require('./pic');
 const request = require('request');
+
 
 Router.use(express.urlencoded());
 Router.use('/user', userRouter);
 Router.use('/adm', admRouter);
 Router.use('/bill', billRouter);
+Router.use('/pic', picRouter);
 
 
 Router.get('/verify', (req, res) => {
