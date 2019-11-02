@@ -74,9 +74,9 @@
     font-size: .875rem;
     color: #aaaaaa;
 }
-.list_son_son .son_two{
+/* .list_son_son .son_two{
 
-}
+} */
 .list_son_son .son_two>p:nth-child(1) span:nth-child(1){
     font-size:1.125rem;
     font-weight: 500;
@@ -100,7 +100,6 @@ padding: .625rem ;
     background-color: #fafafb;
     margin: 0 1rem .25rem;
     border-radius: .625rem;
-    
 }
 .last_list_left{
     display: flex;
@@ -124,11 +123,10 @@ padding: .625rem ;
     font-size: 1.65rem;
     margin:0 .925rem 0 .625rem;
 }
-
 .last_list_left>p:nth-child(3) span:nth-child(1){
     color: #161515;
     font-weight: 600;
-    font-size: 1.125rem;
+    font-size: 1.125rem; 
     margin-bottom: .25rem;
     
 }

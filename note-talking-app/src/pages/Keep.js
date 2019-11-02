@@ -11,7 +11,7 @@ import { Route } from 'react-router-dom';
 import Addbill from './addbill';
 import Addone from './addone';
 function callback(key) {
- 
+
 }
 const mapStateToProps = ({ home }) => ({
     outcomelist: home.outcomelist
@@ -27,11 +27,11 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-@connect(mapStateToProps,mapDispatchToProps)
+@connect(mapStateToProps, mapDispatchToProps)
 class Keep extends React.Component {
 
     state = {
-        activeKey:"0",
+        activeKey: "0",
         keep_menu: [{ name: "支出" },
         { name: "收入" },
         { name: "转账" },
@@ -49,14 +49,14 @@ class Keep extends React.Component {
     }
     render() {
 
-        let { keep_menu, activeKey} = this.state;
-        let { match, update, outcomelist}=this.props
-       
+        let { keep_menu, activeKey } = this.state;
+        let { match, update, outcomelist } = this.props
+
         return (
             <div className="keep">
                 <div className="keep_top">
                     <div className="keep_top_top">
-                        <div ><Icon type="left" onClick={update.bind(this,'/home')}></Icon></div>
+                        <div ><Icon type="left" onClick={update.bind(this, '/home')}></Icon></div>
                         <div style={{ fontWeight: 900 }}>记一笔</div>
                         <div style={{ fontWeight: 600, color: "#e9a944" }}>
                             <Icon type="check"></Icon>
@@ -70,19 +70,19 @@ class Keep extends React.Component {
                             {
                                 keep_menu.map((item, index) => {
                                     return (<TabPane tab={item.name} key={index}>
-                                            <Route path={match.path + "/:name"} component={Addone}></Route>
-                                           </TabPane>)
-                                }) 
-                                
-                          }
+                                        <Route path={match.path + "/:name"} component={Addone}></Route>
+                                    </TabPane>)
+                                })
+
+                            }
                         </Tabs>
                     </div>
                 </div>
-               
+
                 <div className="keep_bottom">
-                  <span>保存</span>
-                  <span>存为模板</span>
-                  <span>再记一笔</span>
+                    <span>保存</span>
+                    <span>存为模板</span>
+                    <span>再记一笔</span>
                 </div>
             </div>
         )
