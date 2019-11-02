@@ -18,7 +18,8 @@ import Make from './pages/Make';
 import Makr from './pages/User/Makr';
 import List from './pages/List';
 import Budget from './pages/Budget';
-import Not from './pages/Not'
+import Not from './pages/Not';
+
 //下面的用于测试
 import Test from './pages/test'
 import Case from './pages/case'
@@ -83,9 +84,6 @@ class App extends Component {
 
     render() {
         let { history, update, selected_state, incomelist, outcomelist } = this.props
-
-
-        // console.log("outcomelist", outcomelist)
         let { menu } = this.state;
 
         return (

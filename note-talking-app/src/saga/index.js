@@ -25,17 +25,30 @@ function* getData() {
     yield put(outcomelists)
 
     //获取本年支出
-    var today_year_outcome = outcomelist.reduce(function (prev, item) {
-        return prev + Number(item.price);
-    }, 0);
+    // var today_year_outcome = outcomelist.reduce(function (prev, item) {
+    //     return prev + Number(item.price);
+    // }, 0);
 
-    let today_years_outcomelist = {
-        type: 'init_state_sync_outcomelist_year',
-        payload: today_year_outcome.toFixed(2)
-    }
-    yield put(today_years_outcomelist)
+    // let today_years_outcomelist = {
+    //     type: 'init_state_sync_outcomelist_year',
+    //     payload: today_year_outcome.toFixed(2)
+    // }
+    // yield put(today_years_outcomelist)
 
+    // 本月支出
 
+    // var num_month = outcomelist.reduce(function (prev, item) {
+    //     if (item.month == 11) {
+    //         return prev + Number(item.price);
+    //     }
+       
+    // }, 0);
+
+    // let today_month_outcomes = {
+    //     type: 'init_state_sync_outcomelist_month',
+    //     payload: num_month
+    // }
+    // yield put(today_month_outcomes)
 
 
     //收入账本
@@ -52,15 +65,15 @@ function* getData() {
 
 
     //获取本年收入
-    var today_year_income = incomelist.reduce(function (prev, item) {
-        return prev + Number(item.price);
-    }, 0);
-  
-    let today_years_incomelist = {
-        type: 'init_state_sync_incomelist_year',
-        payload: today_year_income.toFixed(2)
-    }
-    yield put(today_years_incomelist)
+    // var today_year_income = incomelist.reduce(function (prev, item) {
+    //     return prev + Number(item.price);
+    // }, 0);
+
+    // let today_years_incomelist = {
+    //     type: 'init_state_sync_incomelist_year',
+    //     payload: today_year_income.toFixed(2)
+    // }
+    // yield put(today_years_incomelist)
 
 
 }

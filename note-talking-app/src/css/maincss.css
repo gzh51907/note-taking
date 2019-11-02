@@ -7,10 +7,10 @@
     
 }
 .menuitemss>li{
-   width: 20%;
-   display: flex;
-  padding: 0;
- text-align: center;
+    width: 20%;
+    display: flex;
+    padding: 0;
+    text-align: center;
 }
 /* 背景图位置 */
 .list_center{
@@ -25,10 +25,10 @@
 }
 .list_center p:nth-child(2){
     color: #fff;
-   font-size: 1.875rem;
-   line-height:1.875rem ;
-   margin-top: .25rem;
-   margin-bottom: .625rem;
+    font-size: 1.875rem;
+    line-height:1.875rem ;
+    margin-top: .25rem;
+    margin-bottom: .625rem;
 }
 .list_center p:nth-child(3) span{
     font-size: 0.8rem;

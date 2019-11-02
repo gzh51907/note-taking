@@ -20,26 +20,25 @@
     justify-content: space-between;
     align-items: center;
     background-color: #fff;
-      padding: 0 .55rem;
-      box-sizing: border-box;
+    padding: 0 .55rem;
+    box-sizing: border-box;
 }
 .keep_bottom span{
     border-radius:.25rem;
     line-height: 40px;
 }
 .keep_bottom span:nth-child(1){
-background-color: #ed8f34;
-width: 50%;
-height: 80%;
-text-align: center;
-color: #fff;
-
+    background-color: #ed8f34;
+    width: 50%;
+    height: 80%;
+    text-align: center;
+    color: #fff;
 }
-.keep_bottom span:nth-child(2),.keep_bottom span:nth-child(3){
-background-color: #ededef;
-width: 23%;
-height: 80%;
-text-align: center;
-color: #888888;
 
+.keep_bottom span:nth-child(2),.keep_bottom span:nth-child(3){
+    background-color: #ededef;
+    width: 23%;
+    height: 80%;
+    text-align: center;
+    color: #888888;
 }

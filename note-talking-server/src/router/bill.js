@@ -10,6 +10,11 @@ Router.post('/addbill', async (req, res) => {
 			node_id,
 			type,
 			title,
+			icon,
+			color,
+			title_1,
+			icon_1,
+			color_1,
 			price,
 			text } = req.body.params;
 	let date = new Date();
@@ -18,16 +23,21 @@ Router.post('/addbill', async (req, res) => {
 	let result=await mongo.update('nodebill',{"user" : user_name},
 	{ [condition]:{
 			'list_id':Date.now(),
-            "title" : title,
+            "title": title,
+			"icon":icon,
+			"color":color,
+			"title_1":title_1,
+			"icon_1":icon_1,
+			"color_1":color_1,
 			"price":price,
 			"text":text,
 			"year":date.getFullYear(),
-			"month ":date.getMonth(),
+			"month":date.getMonth(),
 			"day":date.getDate(),
 			"week":date.getDay(),
-			// "month ":10,
-			// "day":30,
-			// "week":3,
+			// "month":10,
+			// "day":1,
+			// "week":5,
 			// 'regtime':date.toLocaleString()
     }});
 	if (result.length) {

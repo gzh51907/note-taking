@@ -6,9 +6,10 @@ let initialState = {
     selected: '/home',
     userlist: [],
     outcomelist: [],
-    incomelist: "",
+    incomelist: [],
     income_year: 0.00,
-    outcome_year:0.00,
+    outcome_year: 0.00,
+    outmonth:0.00,
     todayin: 0.00,
     todayout: 0.00
 
@@ -46,10 +47,17 @@ function reducer(state = initialState, { type, payload }) {
                 ...state,
                 income_year: payload
             }
+        // 本年支出
         case "init_state_sync_outcomelist_year":
             return {
                 ...state,
                 outcome_year: payload
+            }
+        // 本月支出
+        case "init_state_sync_outcomelist_month":
+            return {
+                ...state,
+                outmonth: payload
             }
         default:
             return state;
