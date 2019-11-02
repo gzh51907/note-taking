@@ -9,16 +9,13 @@ const mapStateToProps = ({ home }) => ({
     incomelist: home.incomelist
 });
 
-import { year_outcome, year_income, week_outcome, week_intcome, month_outcome, month_income, day_outcome, day_intcome} from './time';
+import { year_outcome, year_income, week_outcome, week_intcome, month_outcome, month_income, day_outcome, day_intcome } from './time';
 
 @connect(mapStateToProps)
 
 class Home extends React.Component {
     render() {
-
         let { outcomelist, incomelist } = this.props
-        
-        
         return (
             <div>
                 <div className="top">
@@ -150,14 +147,14 @@ class Home extends React.Component {
                             <div className="small_title"><Icon type="edit" style={{ color: "#bcb8f9" }}></Icon></div>
                             <div className="small_title2">
                                 <p>社区</p>
-                                <p>                                  
+                                <p>
                                     <span>写作变现的4个途径，适合开源</span>
                                 </p>
                             </div>
                         </div>
                         <div className="together_right">
                             <div className="right_number">
-                                <p style={{ color:"#e9a040"}}>签到领现金</p>
+                                <p style={{ color: "#e9a040" }}>签到领现金</p>
                             </div>
                             <div><Icon type="right"></Icon></div>
                         </div>
