@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 import { Icon, Tabs ,notification  } from 'antd';
 const { TabPane } = Tabs;
 import Api from '../api/index';
@@ -11,8 +12,9 @@ import { Route } from 'react-router-dom';
 import Addbill from './addbill';
 import Addone from './addone';
 function callback(key) {
-    console.log(key);
+
 }
+
 const mapStateToProps = ({ keep }) => ({
 	isvalue:keep.value,
 	isprice:keep.price,
@@ -51,16 +53,10 @@ class Keep extends React.Component {
 
     changeType = async (name) => {
         let { history } = this.props;
-		// this.setState({
-		// 	menukey:name
-		// })
-		// console.log("menukey",this.state.menukey)
         history.push('/keep/' + name)
     }
     componentDidMount() {
         let { history} = this.props;
-		// console.log(match.params.name)
-		// console.log("menukey",this.state.menukey)
         history.push('/keep/' + 0)
     }
 
@@ -129,7 +125,7 @@ class Keep extends React.Component {
             <div className="keep">
                 <div className="keep_top">
                     <div className="keep_top_top">
-                        <div ><Icon type="left" onClick={update.bind(this,'/home')}></Icon></div>
+                        <div ><Icon type="left" onClick={update.bind(this, '/home')}></Icon></div>
                         <div style={{ fontWeight: 900 }}>记一笔</div>
                         <div style={{ fontWeight: 600, color: "#e9a944" }}>
                             <Icon type="check"></Icon>
@@ -143,15 +139,15 @@ class Keep extends React.Component {
                             {
                                 keep_menu.map((item, index) => {
                                     return (<TabPane tab={item.name} key={index}>
-                                            <Route path={match.path + "/:name"} component={Addone}></Route>
-                                           </TabPane>)
-                                }) 
-                                
-                          }
+                                        <Route path={match.path + "/:name"} component={Addone}></Route>
+                                    </TabPane>)
+                                })
+
+                            }
                         </Tabs>
                     </div>
                 </div>
-               
+
                 <div className="keep_bottom">
                   <span onClick={this.pushBill}>保存</span>
                   <span>存为模板</span>

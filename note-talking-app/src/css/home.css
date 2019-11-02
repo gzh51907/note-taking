@@ -140,6 +140,7 @@ padding: 0 .825rem;
 }
 .bottom .together .together_right .right_number{
     margin-right: .325rem;
+    text-align: right;
 }
 .bottom .together .together_right .right_number p:nth-child(1){
 color: #d95f52;

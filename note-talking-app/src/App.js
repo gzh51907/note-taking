@@ -17,7 +17,8 @@ import Keep from './pages/Keep';
 import Make from './pages/Make';
 import List from './pages/List';
 import Budget from './pages/Budget';
-import Not from './pages/Not'
+import Not from './pages/Not';
+
 //下面的用于测试
 import Test from './pages/test'
 import Case from './pages/case'
@@ -26,13 +27,14 @@ import Addone from './pages/addone'
 const mapStateToProps = ({ home }) => ({
 
     selected_state: home.selected,
-    notelist: home.notelist
+    incomelist: home.incomelist,
+    outcomelist: home.outcomelist
 
 });
 const mapDispatchToProps = dispatch => {
     return {
         update(payload) {
-            // console.log(payload)
+
             dispatch({ type: 'UPDATE_SELECTED', payload })
         },
         dispatch
@@ -79,8 +81,7 @@ class App extends Component {
     }
 
     render() {
-        let { history, update, selected_state, notelist } = this.props
-        console.log(notelist)
+        let { history, update, selected_state, incomelist, outcomelist } = this.props
         let { menu } = this.state;
 
         return (
@@ -93,8 +94,8 @@ class App extends Component {
                     <Route path="/make" component={Make}></Route>
                     <Route path="/keep" component={Keep}></Route>
                     <Route path="/test" component={Test}></Route>
-					<Route path="/case" component={Case}></Route>
-					<Route path="/addone" component={Addone}></Route>
+                    <Route path="/case" component={Case}></Route>
+                    <Route path="/addone" component={Addone}></Route>
                     <Route path="/" component={Not}></Route>
                 </Switch>
                 <Menu

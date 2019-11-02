@@ -4,31 +4,19 @@ import { Icon, Collapse } from 'antd';
 const { Panel } = Collapse;
 import { List_son } from './List_son';
 
+import EchartsTest from './bing';
+import { connect } from 'react-redux';
+const mapStateToProps = ({ home }) => ({
+    outcomelist: home.outcomelist,
+    incomelist: home.incomelist
+});
 
 
-const creatmonth = function (year, month) {
-    return (<div className="list_son_son">
-        <div className="son_one">
-            <p>{month}</p>
-            <p>{year}</p>
-        </div>
-        <div className="son_two">
-            <p>
-                <span>0.00</span>
-                <span>结余</span>
-            </p>
-            <p>
-                <span style={{ color: "#eaa294" }}>收入</span>
-                <span style={{ color: "#aaaaaa" }}>0.00</span>
-                <span style={{ color: "#aaaaaa" }}>|</span>
-                <span style={{ color: "#abe0ce" }}>支出</span>
-                <span style={{ color: "#aaaaaa" }}>0.00</span>
-            </p>
-        </div>
-    </div>)
-}
 
 
+import { year_outcome, year_income, jieyu, jieyu_small, shouru_small, small_list1, zhichu_small, small_list2 } from './time';
+
+@connect(mapStateToProps)
 
 
 class List extends React.Component {
@@ -37,56 +25,75 @@ class List extends React.Component {
         monthlist: [
             {
                 year: 2019,
-                month: "1月"
+                month: "11"
             },
             {
                 year: 2019,
-                month: "2月"
+                month: "10"
             },
             {
                 year: 2019,
-                month: "3月"
+                month: "9"
             },
             {
                 year: 2019,
-                month: "4月"
+                month: "8"
             },
             {
                 year: 2019,
-                month: "5月"
+                month: "7"
             },
             {
                 year: 2019,
-                month: "6月"
+                month: "6"
             },
             {
                 year: 2019,
-                month: "7月"
+                month: "5"
             },
             {
                 year: 2019,
-                month: "8月"
+                month: "4"
             },
             {
                 year: 2019,
-                month: "9月"
+                month: "3"
             },
             {
                 year: 2019,
-                month: "10月"
+                month: "2"
             },
             {
                 year: 2019,
-                month: "11月"
-            },
-            {
-                year: 2019,
-                month: "12月"
+                month: "1"
             }
         ]
     }
+    creatmonth = function (year, month, incomelist, outcomelist) {
+
+        return (<div className="list_son_son">
+            <div className="son_one">
+                <p>{month}月</p>
+                <p>{year}</p>
+            </div>
+            <div className="son_two">
+                <p>
+                    <span>{jieyu_small(year, month, incomelist, outcomelist)}</span>
+                    <span>结余</span>
+                </p>
+                <p>
+                    <span style={{ color: "#eaa294" }}>收入</span>
+                    <span style={{ color: "#aaaaaa" }}>{shouru_small(year, month, incomelist)}</span>
+                    <span style={{ color: "#aaaaaa" }}>|</span>
+                    <span style={{ color: "#abe0ce" }}>支出</span>
+                    <span style={{ color: "#aaaaaa" }}>{zhichu_small(year, month, outcomelist)}</span>
+                </p>
+            </div>
+        </div>)
+    }
 
     render() {
+        let { outcomelist, incomelist } = this.props
         const { expandIconPosition, monthlist } = this.state;
         return (
             <div className="list">
@@ -103,13 +110,13 @@ class List extends React.Component {
                 </div>
                 <div className="list_center">
                     <p>结余</p>
-                    <p>0.00</p>
+                    <p>{jieyu(incomelist, outcomelist)}</p>
                     <p>
                         <span>收入</span>
-                        <span>0.00</span>
+                        <span>{year_income(incomelist)}</span>
                         <span>|</span>
                         <span>支出</span>
-                        <span>0.00</span>
+                        <span>{year_outcome(outcomelist)}</span>
                     </p>
                 </div>
                 <div className="list_bottom">
@@ -119,16 +126,20 @@ class List extends React.Component {
                                 monthlist.map(item => {
                                     return (
                                         <Collapse key={item.month} expandIconPosition={expandIconPosition} bordered={false}>
-                                            <Panel key="2" header={creatmonth(item.year, item.month)} >
-                                                {<div>测试</div>}
+                                            <Panel key="2" header={this.creatmonth(item.year, item.month, incomelist, outcomelist)} >
+                                                {small_list1(item.month, incomelist, outcomelist)}
+                                                { small_list2(item.month, incomelist, outcomelist)}
                                             </Panel>
                                         </Collapse>
                                     )
                                 })
                             }
                         </Panel>
+                        <EchartsTest></EchartsTest>
                     </Collapse>
+                  
                 </div>
+               
             </div>
         )
     }

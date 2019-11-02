@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
 import { Button,Input ,Icon,Row,Col,Tooltip ,Form, Radio} from 'antd';
+=======
+import React from 'react';
+import { Button, Input, Icon, Row, Col, Tooltip } from 'antd';
+>>>>>>> 00743d870a9ed213b944c0d15b6fc168960007e4
 import Api from '../api/index';
 import qs from 'qs';
 import axios from 'axios'
@@ -25,6 +30,7 @@ const mapDispatchToProps = dispatch => {
 @connect(mapStateToProps,mapDispatchToProps)
 class Addone extends React.Component {
 	state = {
+<<<<<<< HEAD
 		display:'none',
 		bottom:'-12.5rem',
 		keyword:false,
@@ -155,35 +161,120 @@ class Addone extends React.Component {
 			})
 			this.state.alldata.push(darr)
 			this.state.alldata.push(darr1)
+=======
+		bottom: '-12.5rem',
+		keyword: false,
+		iskey: '0',
+		type: 0,
+		value: '',
+		data: [
+			{
+				text: '唱歌',
+			}, {
+				text: '跳舞',
+			}, {
+				text: '看电影',
+			}
+		],
+		cart: [
+			{
+				id: '1',
+				title: '分类',
+				text: '娱乐',
+				icon: 'appstore',
+				color: '#dd779c'
+			}, {
+				id: '2',
+				title: '账号',
+				text: '银行卡',
+				icon: 'bank',
+				color: '#d9ac39'
+			}, {
+				id: '3',
+				title: '商家',
+				text: '超市商场',
+				icon: 'shop',
+				color: '#7abba5'
+			}
+		],
+		alldata: [
+			[
+				{
+					text: '唱歌',
+				}, {
+					text: '跳舞',
+				}, {
+					text: '看电影',
+				}
+			],
+			[
+				{
+					text: '银行',
+				}, {
+					text: '信用卡',
+				}, {
+					text: '现金',
+				}
+			]
+		]
+
 	}
-	
-	check(key){	
+
+	async componentDidMount() {
+		let user_name = 'laoyao';
+		let datas = await Api.post('/bill/getbill', {
+			user_name
+		})
+		let data = datas[0].note.note_id_1.bill.outcome.list;
+		//便签排他
+		let arr = [];
+		let num = 0;
+		let darr = [];
+		data.map(item => {
+			num = 0;
+			arr.forEach(title => {
+				if (item.title == title) {
+					num++;
+				}
+			});
+			if (num == 0) {
+				arr.push(item.title)
+				darr.push({ text: item.title })
+			}
+		});
+
+		this.state.alldata.push(darr)
+>>>>>>> 00743d870a9ed213b944c0d15b6fc168960007e4
+	}
+
+	check(key) {
 		// 内容
 		this.setState({
-			data:this.state.alldata[key-1],
-			type:key
+			data: this.state.alldata[key - 1],
+			type: key
 		})
-		
+
 		// 弹窗
-		let isbotton='';
+		let isbotton = '';
 		// console.log(key,this.state.iskey)
-		
-		if(this.state.iskey==key){
-			isbotton='-12.5rem';
-		}else{
-			isbotton=0;
+
+		if (this.state.iskey == key) {
+			isbotton = '-12.5rem';
+		} else {
+			isbotton = 0;
 		}
 		this.setState({
-			iskey:key,
-			bottom:isbotton
+			iskey: key,
+			bottom: isbotton
 		})
-		if(isbotton=='-12.5rem'){
+		if (isbotton == '-12.5rem') {
 			this.setState({
-				iskey:0
+				iskey: 0
 			})
 		}
-		
+
 	}
+<<<<<<< HEAD
 	
 	change(e){
 		let text=e.target.innerText;
@@ -207,8 +298,21 @@ class Addone extends React.Component {
 				item.color_1=arr1[0];
 			}
 		})
+=======
+
+	change(e) {
+		let text = e.target.innerText;
+		console.log(text)
+		let cart = this.state.cart
+		cart.map(item => {
+			if (item.id == this.state.type) {
+				item.text = text
+			}
+		})
+
+>>>>>>> 00743d870a9ed213b944c0d15b6fc168960007e4
 		this.setState({
-			cart:cart
+			cart: cart
 		})
 		let { changeAlltitle}= this.props;
 		let alltitle={}
@@ -229,6 +333,7 @@ class Addone extends React.Component {
 		
 		
 	}
+<<<<<<< HEAD
 	  onChange = ({ target: { value } }) => {
 		let { onChange}= this.props;
 		onChange(value)
@@ -348,11 +453,22 @@ class Addone extends React.Component {
 						 </Radio.Group>
 					</div>
 				</div>
+=======
+	onChange = ({ target: { value } }) => {
+		this.setState({ value });
+	};
+	render() {
+		let { bottom, text, type, value } = this.state;
+		let { data, cart } = this.state;
+		return (
+			<div className={'addone'}>
+>>>>>>> 00743d870a9ed213b944c0d15b6fc168960007e4
 				<div className={'price'}>
-					<div  className={'pic'}>
-						<Icon type="fund" className={'icon'}/>
+					<div className={'pic'}>
+						<Icon type="fund" className={'icon'} />
 						<span>照片</span>
 					</div>
+<<<<<<< HEAD
 					<Input placeholder="0.00" 
 					className={'input'}
 					value={isprice}
@@ -384,10 +500,36 @@ class Addone extends React.Component {
 				</div>
 				<div className={'box'} style={{bottom:this.state.bottom}}>
 						<Button type="link" onClick={this.titlebox}>手动添加标题</Button>
+=======
+					<Input placeholder="0.00" className={'input'} />
+				</div>
+				<ul className={'list'}>
+					{
+						cart.map(item => {
+							return (
+								<li onClick={this.check.bind(this, item.id)} key={item.id}>
+									<Icon type={item.icon} className={'icon'} style={{ color: item.color }} />
+									<span className={'titlt'}>{item.title}</span>
+									<span className={'text'}>{item.text}</span>
+								</li>
+							)
+						})
+					}
+				</ul>
+				<div className={'remark'}>
+					<TextArea
+						value={value}
+						onChange={this.onChange}
+						placeholder="写下日志，记录这个美好的时刻吧......"
+						autoSize={{ minRows: 2, maxRows: 5 }}
+					/>
+				</div>
+				<div className={'box'} style={{ bottom: this.state.bottom }}>
+>>>>>>> 00743d870a9ed213b944c0d15b6fc168960007e4
 					<Row gutter={[24, 24]}>
 						{
-							data.map(item =>{
-								return(
+							data.map(item => {
+								return (
 									<Col span={6} className={'col'} key={item.text}>
 										<Button onClick={this.change.bind(this)} key={item.text}>
 										<Icon type={item.icon} className={'icon'}  style={{color:item.color}}/>
@@ -397,10 +539,14 @@ class Addone extends React.Component {
 								)
 							})
 						}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 00743d870a9ed213b944c0d15b6fc168960007e4
 					</Row>
 				</div>
-			</div>	
-        )
-    }
+			</div>
+		)
+	}
 }
 export default Addone;
