@@ -7,8 +7,8 @@ import axios from 'axios'
 class Test extends React.Component {
 	//登录
 	async gologin(){
-		let user_name = 'xiaoxie' ;
-		let password ='1234567'
+		let user_name = 'xiaoxie6' ;
+		let password ='123456'
 		let mdl =true
 		let datas=await Api.post('/user/login',{
 			user_name:user_name,
