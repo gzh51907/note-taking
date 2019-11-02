@@ -4,7 +4,7 @@ import { Icon, Collapse } from 'antd';
 const { Panel } = Collapse;
 import { List_son } from './List_son';
 
-
+import EchartsTest from './bing';
 import { connect } from 'react-redux';
 const mapStateToProps = ({ home }) => ({
     outcomelist: home.outcomelist,
@@ -135,8 +135,11 @@ class List extends React.Component {
                                 })
                             }
                         </Panel>
+                        <EchartsTest></EchartsTest>
                     </Collapse>
+                  
                 </div>
+               
             </div>
         )
     }

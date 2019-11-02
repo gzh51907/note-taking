@@ -124,9 +124,18 @@ font-size: .75rem;
     font-size: 1.65rem;
     margin:0 .925rem 0 .625rem;
 }
-.last_list_left>p:nth-child(3){
+
+.last_list_left>p:nth-child(3) span:nth-child(1){
     color: #161515;
     font-weight: 600;
+    font-size: 1.125rem;
+    margin-bottom: .25rem;
+    
+}
+.last_list_left>p:nth-child(3) span:nth-child(2){
+    color: #afafaf;
+   font-size:.75rem;
+   line-height:.75rem ;
     
 }
 .last_list_left>p{

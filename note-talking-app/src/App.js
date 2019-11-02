@@ -17,7 +17,8 @@ import Keep from './pages/Keep';
 import Make from './pages/Make';
 import List from './pages/List';
 import Budget from './pages/Budget';
-import Not from './pages/Not'
+import Not from './pages/Not';
+
 //下面的用于测试
 import Test from './pages/test'
 import Case from './pages/case'
@@ -33,7 +34,7 @@ const mapStateToProps = ({ home }) => ({
 const mapDispatchToProps = dispatch => {
     return {
         update(payload) {
-          
+
             dispatch({ type: 'UPDATE_SELECTED', payload })
         },
         dispatch

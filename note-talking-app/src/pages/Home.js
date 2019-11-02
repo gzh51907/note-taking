@@ -51,11 +51,11 @@ class Home extends React.Component {
                 </div>
                 <div className="center">
                     <div className="centetr_top">
-                        <span>10</span>
+                        <span>11</span>
                         <span>月‧支出</span>
                     </div>
                     <div className="centetr_center">
-                        <span>15.00</span>
+                        <span>{month_outcome(outcomelist)}</span>
                         <Icon type="instagram" ></Icon>
                     </div>
                     <div className="centetr_bottom">
@@ -73,9 +73,9 @@ class Home extends React.Component {
                             <div className="small_title2">
                                 <p>今天</p>
                                 <p>
-                                    <span>最近一笔</span>
-                                    <span>早午晚餐</span>
-                                    <span>15.00</span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
                                 </p>
                             </div>
                         </div>

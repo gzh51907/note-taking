@@ -151,16 +151,14 @@ export function small_list1(month, incomelist, outcomelist) {
 
     let incomelist_date = incomelist.map(item => {
         if (item.month == month) {
-            console.log("item.week", item.week)
-            console.log(item.day)
             return (<div key={item.list_id} className="last_list">
                 <div className="last_list_left">
                     <p>
                         <span>{item.day}</span>
-                        <span>周一{item.week}</span>
+                        <span>周{item.week}</span>
                     </p>
                     <p><Icon type="crown"></Icon></p>
-                    <p>{item.title}</p>
+                    <p><span>{item.title}</span><span>{item.title_1}</span></p>
                 </div>
                 <div className="last_list_right">{item.price}.00</div>
             </div>)
@@ -172,18 +170,19 @@ export function small_list2(month, incomelist, outcomelist) {
 
     let outcomelist_date = outcomelist.map(item => {
         if (item.month == month) {
-          
+
             return (<div key={item.list_id} className="last_list">
-                        <div className="last_list_left">
-                            <p>
-                                <span>{item.day}</span>
-                                <span>周{item.week}</span>
-                            </p>
-                            <p><Icon type="user"></Icon></p>
-                            <p>{item.title}</p>
-                        </div>
-                        <div className="last_list_right" style={{ color: "red" }}>{item.price}.00</div>
-                    </div>)
+                <div className="last_list_left">
+                    <p>
+                        <span>{item.day}</span>
+                        <span>周{item.week}</span>
+                    </p>
+                    <p><Icon type={item.icon} style={{color:item.color}}></Icon></p>
+                    <p><span>{item.title}</span><span>{item.title_1}</span></p>
+                  
+                </div>
+                <div className="last_list_right" style={{ color: "red" }}>{item.price}.00</div>
+            </div>)
         }
     })
     return outcomelist_date
