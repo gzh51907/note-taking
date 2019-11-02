@@ -5,7 +5,8 @@
 let initialState = {
     selected: '/home',
     userlist: [],
-    notelist:[]
+    notelist:[],
+	value:"123456"
 }
 
 // Reducer：用于定义修改state方式，必须返回一个新的state

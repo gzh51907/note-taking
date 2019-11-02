@@ -13,6 +13,7 @@ const { formatData, token } = require('../utils')
 //注册
 Router.post('/reg', async (req, res) => {
     let { user_name, password } = req.body.params;
+	// console.log(user_name,password)
 	let date = new Date();
 	let result=await mongo.update('user',{},{"user":{
             "user_name" : user_name,
