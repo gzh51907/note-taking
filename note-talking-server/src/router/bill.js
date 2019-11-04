@@ -32,7 +32,7 @@ Router.post('/addbill', async (req, res) => {
 			"price":price,
 			"text":text,
 			"year":date.getFullYear(),
-			"month":date.getMonth(),
+			"month":date.getMonth()*1+1,
 			"day":date.getDate(),
 			"week":date.getDay(),
 			// "month":10,
