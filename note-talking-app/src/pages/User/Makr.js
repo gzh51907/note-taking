@@ -56,6 +56,7 @@ class Makr extends React.Component {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 message.success(`${userInfo.userName}欢迎您 ，当前密码为：${userInfo.userPwd}`)
+                console.log('Received values of form: ', values);
             }
         })
     }
@@ -72,14 +73,14 @@ class Makr extends React.Component {
                         }}
                         onBack={() => window.history.back()}
                         subTitle="账号登陆/注册"
-                        extra={[
-                            <Button type="primary" onClick={this.showDrawer}>
-                                最近登录
-                        </Button>
-                        ]}
+                    // extra={[
+                    //     <Button type="primary" onClick={this.showDrawer}>
+                    //         最近登录
+                    // </Button>
+                    // ]}
 
                     >
-                        <Drawer
+                        {/* <Drawer
                             title="登录历史"
                             placement="right"
                             closable={false}
@@ -87,7 +88,7 @@ class Makr extends React.Component {
                             visible={this.state.visible}
                         >
                             <p>Some contents...</p>
-                        </Drawer>
+                        </Drawer> */}
                     </PageHeader>
                 </div>
 
@@ -134,6 +135,7 @@ class Makr extends React.Component {
                                     )
                                 }
                             </FormItem>
+
                             <FormItem>
                                 {
                                     getFieldDecorator('remember', {
@@ -145,6 +147,7 @@ class Makr extends React.Component {
                                 }
                                 <a href="#" style={{ float: 'right' }}>忘记密码</a>
                             </FormItem>
+
                             <FormItem>
                                 <Input
                                     type="primary"

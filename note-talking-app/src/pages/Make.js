@@ -5,10 +5,12 @@ let Style = {
     containey: { width: '100%', height: 50, background: ' rgb(250, 247, 247)' },
     containet: { width: '100%', height: 50, border: '1px solid rgb(235, 237, 240)', background: ' rgb(250, 247, 247)' }
 }
-import { PageHeader, Avatar, Icon, Row, Col, Drawer, Button } from 'antd';
-
+import { PageHeader, Avatar, Icon, Row, Col, Drawer, Button, Form, Input } from 'antd';
 
 import './User/Makr.scss';
+
+const FormItem = Form.Item;
+
 class Make extends React.Component {
     state = { visible: false };
 
@@ -23,6 +25,7 @@ class Make extends React.Component {
             visible: false,
         });
     };
+
     render() {
         return (
             <div>
@@ -33,6 +36,7 @@ class Make extends React.Component {
                     onBack={() => null}
                     subTitle="个人中心"
                 ></PageHeader>
+
 
 
                 <div style={Style.container}  >
@@ -63,6 +67,30 @@ class Make extends React.Component {
                                         <Col span={15}>头像</Col>
                                         <Col span={7}> <Avatar size={44} icon="user" /></Col>
                                     </Row>
+                                    <Row>
+                                        <Col span={14}>昵称</Col>
+                                        <Col span={9}>12345678901</Col>
+                                        <Col span={1}>></Col>
+                                    </Row>
+                                    <Row>
+                                        <Col span={14}>手机号</Col>
+                                        <Col span={9}>1234567891</Col>
+                                        <Col span={1}>></Col>
+                                    </Row>
+                                    <Row>
+                                        <Col span={17}>账号绑定</Col>
+                                        <Col span={6}>
+                                            <Icon type="twitter" />
+                                            <Icon type="weibo-circle" />
+                                            <Icon type="qq" />
+                                            <Icon type="wechat" />
+                                        </Col>
+                                        <Col span={1}>></Col>
+                                    </Row>
+                                    <FormItem>
+                                        <Input style={{ background: ' rgb(255, 80, 27)' }}
+                                            type="submit" value="退出登录" />
+                                    </FormItem>
                                 </div>
                             </div>
                         </Drawer>
@@ -114,4 +142,4 @@ class Make extends React.Component {
     }
 }
 export default Make;
-    
+
