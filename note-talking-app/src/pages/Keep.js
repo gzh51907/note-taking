@@ -21,7 +21,8 @@ const mapStateToProps = ({ keep }) => ({
 	istitle:keep.title,
 	iswallet:keep.wallet,
 	ismenukey:keep.menukey,
-	alltitle:keep.alltitle
+	alltitle:keep.alltitle,
+	imgurl:keep.imgurl
 });
 const mapDispatchToProps = dispatch => {
     return {
@@ -62,9 +63,9 @@ class Keep extends React.Component {
 
 	// ----------------
 	 pushBill =async () => {
-			let {isvalue,isprice,istitle,iswallet,ismenukey,alltitle}=this.props
-			// console.log(isvalue,isprice,istitle,iswallet,ismenukey)
-			console.log(alltitle)
+			let {isvalue,isprice,istitle,iswallet,ismenukey,alltitle,imgurl}=this.props
+			// console.log(isvalue,isprice,istitle,iswallet,ismenukey,)
+			console.log(imgurl)
 			//收入或者支出
 			let type=''
 			this.state.keep_menu.map((item,index)=>{
@@ -99,6 +100,7 @@ class Keep extends React.Component {
 			let text=isvalue
 			//钱包（账号）
 			let wallet=iswallet
+			imgurl=imgurl.toString()
 			let datas=await Api.post('/bill/addbill',{
 				user_name,
 				node_id,
@@ -111,9 +113,9 @@ class Keep extends React.Component {
 				color_1,
 				price,
 				text,
-				wallet
+				wallet,
+				imgurl
 			})
-			console.log(datas)
 			if(datas.code==1){
 				alert('保存成功');
 				 let { history } = this.props;

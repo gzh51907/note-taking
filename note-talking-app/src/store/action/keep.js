@@ -4,6 +4,7 @@ export const CHANGE_STATE_WALLET = 'CHANGE_STATE_WALLET';
 export const CHANGE_STATE_TITLE = 'CHANGE_STATE_TITLE';
 export const CHANGE_STATE_MENUKEY = 'CHANGE_STATE_MENUKEY';
 export const CHANGE_STATE_ALLTITLE = 'CHANGE_STATE_ALLTITLE';
+export const CHANGE_STATE_IMGURL = 'CHANGE_STATE_IMGURL';
 function onChange(value){
     return {
         type:CHANGE_STATE_VALUE,
@@ -40,11 +41,18 @@ function changeAlltitle(alltitle){
         payload:alltitle
     }
 }
+function changeImgurl(imgurl){
+    return {
+        type:CHANGE_STATE_IMGURL,
+        payload:imgurl
+    }
+}
 export default {
 	onChange,
 	changePrice,
 	changeWallet,
 	changeTitle,
 	changeMenuket,
-	changeAlltitle
+	changeAlltitle,
+	changeImgurl
 }

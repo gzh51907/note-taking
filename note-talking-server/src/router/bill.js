@@ -16,10 +16,12 @@ Router.post('/addbill', async (req, res) => {
 			icon_1,
 			color_1,
 			price,
+			imgurl,
 			text } = req.body.params;
 	let date = new Date();
 	let obj = {};
 	let condition=`note.${node_id}.bill.${type}.list`
+	console.log(imgurl)
 	let result=await mongo.update('nodebill',{"user" : user_name},
 	{ [condition]:{
 			'list_id':Date.now(),
@@ -31,6 +33,7 @@ Router.post('/addbill', async (req, res) => {
 			"color_1":color_1,
 			"price":price,
 			"text":text,
+			"imgurl":imgurl,
 			"year":date.getFullYear(),
 			"month":date.getMonth()*1+1,
 			"day":date.getDate(),

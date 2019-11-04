@@ -2,14 +2,16 @@
  * 记一笔keep
  */
 import {CHANGE_STATE_VALUE,CHANGE_STATE_PRICE,CHANGE_STATE_TITLE,CHANGE_STATE_WALLET,
-CHANGE_STATE_MENUKEY,CHANGE_STATE_ALLTITLE} from '../action/keep';
+CHANGE_STATE_MENUKEY,CHANGE_STATE_ALLTITLE,CHANGE_STATE_IMGURL} from '../action/keep';
 let initialState = {
 	value:'',
 	price:'',
 	wallet:'',
 	title:'',
 	menukey:'0',
-	alltitle:{}
+	alltitle:{},
+	imgurl:''
+	
 }
 
 // Reducer：用于定义修改state方式，必须返回一个新的state
@@ -51,7 +53,12 @@ function reducer(state = initialState, { type, payload }) {
 			return {
 				...state,
 				alltitle:alltitle 
-				}		
+				}	
+		case "CHANGE_STATE_IMGURL":
+			return {
+				...state,
+				imgurl:payload
+				}
         default:
             return state;
     }
