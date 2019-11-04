@@ -15,6 +15,7 @@ import { connect } from 'react-redux';
 import Home from './pages/Home';
 import Keep from './pages/Keep';
 import Make from './pages/Make';
+import Makr from './pages/User/Makr';
 import List from './pages/List';
 import Budget from './pages/Budget';
 import Not from './pages/Not';
@@ -23,6 +24,7 @@ import Not from './pages/Not';
 import Test from './pages/test'
 import Case from './pages/case'
 import Addone from './pages/addone'
+
 
 const mapStateToProps = ({ home }) => ({
 
@@ -92,11 +94,14 @@ class App extends Component {
                     <Route path="/list" component={List}></Route>
                     <Route path="/budget" component={Budget} className="budgets"></Route>
                     <Route path="/make" component={Make}></Route>
+                    <Route path="/makr" component={Makr}></Route>
                     <Route path="/keep" component={Keep}></Route>
                     <Route path="/test" component={Test}></Route>
                     <Route path="/case" component={Case}></Route>
                     <Route path="/addone" component={Addone}></Route>
                     <Route path="/" component={Not}></Route>
+
+
                 </Switch>
                 <Menu
                     className="menuitemss"
