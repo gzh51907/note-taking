@@ -51,7 +51,7 @@ Router.get('/check', async (req, res) => {
 //登录
 Router.post('/login', async (req, res) => {
     let { user_name, password, mdl } = req.body.params;
-	console.log(user_name,password)
+	console.log(user_name,password,mdl)
 	let result = await mongo.aggregate('user',  [
 		    {$match: {'user.user_name': user_name,'user.password': password}},
 		    {$project: {
@@ -67,9 +67,10 @@ Router.post('/login', async (req, res) => {
 		if(result.length!=0){
 			if (result[0].user.length===1) {
 			    let Authorization;
-			    if (mdl) {
+			    if (mdl=="true") {
 			        Authorization = token.create(user_name)
 			    }
+				
 			    res.send(formatData({ data: Authorization }));
 			} else {
 			    res.send(formatData({ code: 0 }))
@@ -78,24 +79,4 @@ Router.post('/login', async (req, res) => {
 			res.send(formatData({ code: 0 }))
 		}
 })
-//查询并返回用户信息
-// Router.post('/finduser', async (req, res) => {
-//     let {username} = req.body;
-// 	console.log(username)
-//     let result = await mongo.find('user', {username})
-//     res.send(result)
-// 	console.log(result.length)
-// })
-//修改用户的信息
-// Router.post('/fixmsg', async (req, res) => {
-//     let {username,obj} = req.body;
-// 	// console.log(username,Object.keys(obj))
-// 	// password=`$set{${password}}`
-// 	let result=await mongo.update('user',{username},obj,true);
-// 	if (result.length) {
-// 	    res.send(formatData({ code: 0 }))
-// 	} else {
-// 	    res.send(formatData());
-// 	}
-// })
 module.exports = Router;

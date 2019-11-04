@@ -24,6 +24,8 @@ class Make extends React.Component {
         });
     };
     render() {
+		let user= localStorage.getItem("user")
+		let user_name=JSON.parse(user).user_name
         return (
             <div>
                 <PageHeader
@@ -42,8 +44,8 @@ class Make extends React.Component {
                         </Col>
                         <Col span={17}>
                             <div className='ytasdw' >
-                                <span className='ytaswwdw' >2131223123</span><span> <Icon type="sketch-circle" theme="filled" /></span>
-                                <p>2131223123</p>
+                                <span className='ytaswwdw' >欢迎您</span><span> <Icon type="sketch-circle" theme="filled" /></span>
+                                <p>{user_name}</p>
                             </div>
                         </Col>
                         <Col className="rrewq" span={1}>></Col>

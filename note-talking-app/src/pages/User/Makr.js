@@ -14,16 +14,29 @@ const FormItem = Form.Item;
 class Makr extends React.Component {
 
     //登录
-    async gologin() {
-        let user_name = 'xiaoxie6';
-        let password = '123456'
-        let mdl = true
+    async gologin(userName,userPwd,remember) {
+		console.log(remember)
+        let user_name = userName;
+        let password = userPwd;
+        let mdl = remember
         let datas = await Api.post('/user/login', {
             user_name: user_name,
             password: password,
             mdl: mdl
         })
-        console.log(datas)
+		if(datas.code==1){
+			if(datas.data){
+				let Authorization=datas.data;
+				localStorage.setItem("user", JSON.stringify({user_name,Authorization}));
+			}else{
+				localStorage.setItem("user", JSON.stringify({user_name}));
+			}
+			message.success(`${userName}欢迎您`)
+			let { history } = this.props;
+			history.push('/make')
+		}else{
+			alert("登录失败，请重新输入账号密码")
+		}
     }
     // -----------------------------
     state = { visible: false };
@@ -55,7 +68,7 @@ class Makr extends React.Component {
         let userInfo = this.props.form.getFieldsValue();
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                message.success(`${userInfo.userName}欢迎您 ，当前密码为：${userInfo.userPwd}`)
+				this.gologin(userInfo.userName,userInfo.userPwd,userInfo.remember)
             }
         })
     }
