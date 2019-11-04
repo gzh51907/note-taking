@@ -36,8 +36,9 @@ const mapStateToProps = ({ home }) => ({
 const mapDispatchToProps = dispatch => {
     return {
         update(payload) {
-
-            dispatch({ type: 'UPDATE_SELECTED', payload })
+			
+            dispatch({ type: 'UPDATE_SELECTED', payload });
+			this.props.dispatch({ type: 'GET_DATA_ASYNC' });
         },
         dispatch
     }
@@ -79,9 +80,15 @@ class App extends Component {
     }
 
     componentDidMount() {
-        this.props.dispatch({ type: 'GET_DATA_ASYNC' });
+        // this.props.dispatch({ type: 'GET_DATA_ASYNC' });
+		   let user = localStorage.getItem("user")
+		        if (user) {
+		            this.props.dispatch({ type: 'GET_DATA_ASYNC' })
+		        } else {
+		            let { history } = this.props;
+		            history.push('/makr')
+		        }
     }
-
     render() {
         let { history, update, selected_state, incomelist, outcomelist } = this.props
         let { menu } = this.state;

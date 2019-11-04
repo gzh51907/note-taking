@@ -3,14 +3,30 @@ import Registered from '../User/registered';
 import { withRouter } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import Api from '../../api/index';
+import { connect } from 'react-redux';
 
 import { Tabs, PageHeader, Tag, Button, Statistic, Descriptions, Row, Drawer, Form, Icon, Input, Checkbox, Card, message } from 'antd';
 
 const { TabPane } = Tabs;
-
-
 import './Makr.scss';
 const FormItem = Form.Item;
+const mapStateToProps = ({ home }) => ({
+
+    selected_state: home.selected,
+    incomelist: home.incomelist,
+    outcomelist: home.outcomelist
+
+});
+const mapDispatchToProps = dispatch => {
+    return {
+        update(payload) {
+            dispatch({ type: 'UPDATE_SELECTED', payload });
+        },
+        dispatch
+    }
+}
+@withRouter
+@connect(mapStateToProps,mapDispatchToProps)
 class Makr extends React.Component {
 
     //登录
@@ -31,9 +47,10 @@ class Makr extends React.Component {
 			}else{
 				localStorage.setItem("user", JSON.stringify({user_name}));
 			}
-			message.success(`${userName}欢迎您`)
+			// message.success(`${userName}欢迎您`)
 			let { history } = this.props;
-			history.push('/make')
+			history.push('/make');
+			// this.props.dispatch({ type: 'GET_DATA_ASYNC' });
 		}else{
 			alert("登录失败，请重新输入账号密码")
 		}
@@ -72,7 +89,10 @@ class Makr extends React.Component {
             }
         })
     }
-
+	componentDidMount() {
+		 let {update}=this.props;
+		 update('/make')
+	}
     render() {
 
         const { getFieldDecorator } = this.props.form;
@@ -85,22 +105,10 @@ class Makr extends React.Component {
                         }}
                         onBack={() => window.history.back()}
                         subTitle="账号登陆/注册"
-                        extra={[
-                            <Button type="primary" onClick={this.showDrawer}>
-                                最近登录
-                        </Button>
-                        ]}
+                        
 
                     >
-                        <Drawer
-                            title="登录历史"
-                            placement="right"
-                            closable={false}
-                            onClose={this.onClose}
-                            visible={this.state.visible}
-                        >
-                            <p>Some contents...</p>
-                        </Drawer>
+                        
                     </PageHeader>
                 </div>
 

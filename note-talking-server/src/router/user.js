@@ -21,9 +21,11 @@ Router.post('/reg', async (req, res) => {
             "password" : password,
 			'regtime':date.toLocaleString()
     }});
+	let haveuser = await mongo.create('nodebill', {"user" : user_name})
 	if (result.length) {
 	    res.send(formatData({ code: 0 }))
 	} else {
+		
 	    res.send(formatData());
 	}
 })
@@ -45,6 +47,7 @@ Router.get('/check', async (req, res) => {
     if (result.length) {
         res.send(formatData({ code: 0 }))
     } else {
+		
         res.send(formatData());
     }
 })

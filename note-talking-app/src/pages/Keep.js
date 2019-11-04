@@ -74,7 +74,14 @@ class Keep extends React.Component {
 			})
 			// console.log(type)
 			// 用户名
-			let user_name = 'laoyao';
+			let user= localStorage.getItem("user")
+			let user_name="";
+			if(user){
+				 user_name=JSON.parse(user).user_name;
+			}else{
+				let { history } = this.props;
+				history.push('/makr')
+			}
 			//账本编号
 			let node_id='note_id_1';
 			//账本名

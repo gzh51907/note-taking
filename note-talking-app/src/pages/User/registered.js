@@ -1,4 +1,6 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import {
     Form,
     Input,
@@ -15,6 +17,7 @@ import {
 } from 'antd';
 // const { Option } = Select;
 const AutoCompleteOption = AutoComplete.Option;
+import Api from '../../api/index';
 
 const FormItem = Form.Item;
 class registered extends React.Component {
@@ -24,17 +27,53 @@ class registered extends React.Component {
         confirmDirty: false,
         autoCompleteResult: [],
     };
-
+//注册
+	async gores(name,pass){
+		let user_name = name ;
+		let password =pass;
+		let mdl =true
+		let datas=await Api.post('/user/reg',{
+			user_name:user_name,
+			password:password,
+		})
+		console.log(datas)
+		if(datas.code==1){
+			alert("succse")
+			let { history } = this.props;
+			history.push('/makr')
+		}else{
+			alert("err")
+		}
+	}
     handleSubmit = e => {
         e.preventDefault();
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
-                message.success(`注册成功`)
-                console.log('Received values of form: ', values);
+                // message.success(`注册成功`)
+				this.gores(values.userName,values.password)
+                // console.log('Received values of form: ', values);
+				
 
             }
         });
     };
+	async gocheck(name){
+		let user_name =name;
+		let datas=await Api.get('/user/check',{
+			user_name:user_name
+		})
+		console.log(datas)
+		if (datas.code==1) {
+		    alert('可以注册');
+		} 
+	}
+	//用户名重复
+	   regCheck = e => {
+	        const { value } = e.target;
+			this.gocheck(value)
+			
+	        // this.setState({ confirmDirty: this.state.confirmDirty || !!value });
+	    };
     //密码校验
     handleConfirmBlur = e => {
         const { value } = e.target;
@@ -96,7 +135,7 @@ class registered extends React.Component {
                                     }
                                 ]
                             })(
-                                <Input prefix={<Icon type="user" />} placeholder="请输入账号" />
+                                <Input prefix={<Icon type="user" />} placeholder="请输入账号" onBlur={this.regCheck}/>
                             )
                         }
                     </FormItem>

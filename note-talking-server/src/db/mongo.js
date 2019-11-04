@@ -48,7 +48,7 @@ async function aggregate(colName, query = []) {
 async function create(colName, data) {
     let { db, client } = await conn();
     let col = db.collection(colName);
-    let result = await col.insertMany(data);
+    let result = await col.insert(data);
     client.close();
     return result;
 }

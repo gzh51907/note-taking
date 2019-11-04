@@ -1,11 +1,12 @@
 import React from 'react';
-
+import { Route } from 'react-router-dom';
 let Style = {
     container: { width: '100%', height: 85, background: ' rgb(250, 247, 247)', },
     containey: { width: '100%', height: 50, background: ' rgb(250, 247, 247)' },
     containet: { width: '100%', height: 50, border: '1px solid rgb(235, 237, 240)', background: ' rgb(250, 247, 247)' }
 }
-import { PageHeader, Avatar, Icon, Row, Col, Drawer, Button } from 'antd';
+import { PageHeader, Avatar, Icon, Row, Col, Drawer, Button ,Form,Input} from 'antd';
+const FormItem = Form.Item;
 
 
 import './User/Makr.scss';
@@ -23,9 +24,20 @@ class Make extends React.Component {
             visible: false,
         });
     };
+	quit=()=>{
+		localStorage.removeItem("user");
+		let { history } = this.props;
+		history.push('/makr')
+	}
     render() {
 		let user= localStorage.getItem("user")
-		let user_name=JSON.parse(user).user_name
+		let user_name="";
+		if(user){
+			 user_name=JSON.parse(user).user_name
+		}else{
+			let { history } = this.props;
+			history.push('/makr')
+		}
         return (
             <div>
                 <PageHeader
@@ -61,10 +73,7 @@ class Make extends React.Component {
                         >
                             <div className='kausdyas'>
                                 <div>
-                                    <Row>
-                                        <Col span={15}>头像</Col>
-                                        <Col span={7}> <Avatar size={44} icon="user" /></Col>
-                                    </Row>
+									<Button type="primary" onClick={this.quit}>退出登录</Button>
                                 </div>
                             </div>
                         </Drawer>

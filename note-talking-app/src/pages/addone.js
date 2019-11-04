@@ -106,8 +106,17 @@ class Addone extends React.Component {
 		let {match,changeMenuket}=this.props;
 		let come = match.params.name ;
 		changeMenuket(match.params.name)
+		//获取存在本地用户名
+		let user= localStorage.getItem("user")
+		let user_name="";
+		if(user){
+			 user_name=JSON.parse(user).user_name
+		}else{
+			let { history } = this.props;
+			history.push('/makr')
+		}
+		//----------------------
 			let data=[];
-			let user_name = 'laoyao';
 			let datas=await Api.post('/bill/getbill',{
 				user_name
 			})
@@ -116,11 +125,17 @@ class Addone extends React.Component {
 			})
 			//选择类型
 			if(come==0){
-				data = datas[0].note.note_id_1.bill.outcome.list;
+				if(datas[0].note.note_id_1.bill.outcome){
+					data = datas[0].note.note_id_1.bill.outcome.list;
+				}
 			}else if(come==1){
-				data = datas[0].note.note_id_1.bill.income.list;
+				if(datas[0].note.note_id_1.bill.income){
+					data =datas[0].note.note_id_1.bill.income.list;
+				}
 			}else if(come==2){
-				data = datas[0].note.note_id_1.bill.tracome.list;
+				if(datas[0].note.note_id_1.bill.tracome){
+					data =datas[0].note.note_id_1.bill.tracome.list;
+				}
 			}
 			
 			//便签排他
@@ -302,7 +317,7 @@ class Addone extends React.Component {
 		// 	this.state.value:isvalue
 		// })
         return (	
-            <div className={'addone'}>
+            <div className={'addone'} >
 				<div className={"addtitle"} style={{display:display}}>,
 					 <Form layout="inline">
 					        <Form.Item>
